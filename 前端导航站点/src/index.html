@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>导航站点</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <style type="text/css">
+    .icon-wrapper .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+    .close {
+      position: relative;
+    }
+    .close .icon {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 1.5em;
+      height: 1.5em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+  </style>
+  <body>
+    <section>
+      <header class="globalHeader">
+        <form
+          class="searchForm"
+          method="get"
+          target="_blank"
+          action="https://www.baidu.com/s"
+        >
+          <input type="text" name="wd" />
+          <button type="submit">搜索</button>
+        </form>
+      </header>
+      <main class="globalMain">
+        <ul class="siteList">
+          <li class="last">
+            <div class="addButton">
+              <div class="icon-wrapper">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-add"></use>
+                </svg>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </main>
+    </section>
+    <script src="//at.alicdn.com/t/font_1646346_9n5oiinqepm.js"></script>
+    <script src="//at.alicdn.com/t/font_1646346_c2jnoi5q5j9.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
