@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lxy</title>
+  </head>
+  <body>
+    lxy
+    <script>
+      let xml = new XMLHttpRequest();
+      xml.open("GET", "http://lxyoryxl66.com:9999/friends.json");
+      xml.onreadystatechange = function() {
+        if (xml.readyState === 4 && xml.status === 200) {
+          console.log(xml.responseText);
+        }
+      };
+      xml.send();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>qq</title>
+  </head>
+  <body>
+    qq
+    <script>
+      // let xml = new XMLHttpRequest();
+      // xml.open("GET", "http://lxyoryxl66.com:9999/friends.json");
+      // xml.onreadystatechange = function() {
+      //   if (xml.readyState === 4 && xml.status === 200) {
+      //     console.log(xml.responseText);
+      //   }
+      // };
+      // xml.send();
+
+      // 解决跨域方法二：jsonp
+      function jsonp(url) {
+        return new Promise((resolve, reject) => {
+          let script = document.createElement("script");
+          script.type = "text/javascript";
+          script.src = `${url}?callback=handleCallback`;
+
+          script.onload = () => {
+            script.remove();
+          };
+
+          // 回调执行函数
+          window.handleCallback = res_data => {
+            console.log("s");
+            resolve(res_data);
+          };
+
+          script.onerror = () => {
+            console.log("reject");
+            reject();
+          };
+
+          document.body.appendChild(script);
+        });
+      }
+      console.log("ssss");
+
+      jsonp("http://lxyoryxl66.com:9999/friends.json").then(res => {
+        console.log(res);
+      });
+    </script>
+  </body>
+</html>
