@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <p class="text">
+      {{user.name}} {{loginStatus}}
+    </p>
+    <p>
+      <a href="sign_in.html">登录</a>
+    </p>
+    <script>
+      let [session_id, value] = document.cookie.split("=");
+
+      axios
+        .get("http://localhost:8888/home", {
+          params: {
+            session_id: value
+          }
+        })
+        .then(function(response) {
+          let string = JSON.stringify(response.data);
+          let user_info = JSON.parse(string);
+          console.log(user_info);
+
+          // 替换{{loginStatus}} 、{{user.name}}
+          $(".text")[0].innerHTML = $(".text")[0]
+            .innerHTML.replace("{{loginStatus}}", user_info.loginStatus)
+            .replace("{{user.name}}", user_info.username);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>

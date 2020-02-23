@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>登录</title>
+  </head>
+  <body>
+    <form class="submitForm">
+      <label>用户名:<input type="text" name="username"/></label>
+      <label>密码:<input type="text" name="password"/></label>
+      <button type="submit">登录</button>
+    </form>
+
+    <script>
+      const $form = $(".submitForm");
+      $form.on("submit", e => {
+        e.preventDefault();
+        const name = $form.find("input[name=username]").val();
+        const password = $form.find("input[name=password]").val();
+
+        axios
+          .post("http://localhost:8888/login", { name, password })
+          .then(function(response) {
+            let date = new Date(
+              new Date().getTime() + 1000 * 60 * 60 * 7 * 24
+            ).toGMTString();
+
+            // 设置cookie到浏览器数据库
+            document.cookie = `session_id=${response.data}; expires=${date}`;
+            if (response.status == 200) {
+              //注册成功，跳转到登录页
+              window.location.href = "./home.html";
+            }
+          })
+          .catch(error => {
+            console.log(error);
+            alert("用户名或密码错误！");
+          });
+      });
+    </script>
+  </body>
+</html>

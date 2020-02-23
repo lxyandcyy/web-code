@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>注册</title>
+  </head>
+  <style></style>
+  <body>
+    <form class="submitForm">
+      <label>用户名:<input type="text" name="username"/></label>
+      <label>密码:<input type="text" name="password"/></label>
+      <button type="submit">注册</button>
+    </form>
+
+    <script>
+      const $form = $(".submitForm");
+      $form.on("submit", e => {
+        e.preventDefault();
+        const name = $form.find("input[name=username]").val();
+        const password = $form.find("input[name=password]").val();
+
+        axios
+          .post("http://localhost:8888/register", { name, password })
+          .then(function(response) {
+            //注册成功，跳转到登录页
+            console.log(response);
+            window.location.href = "./sign_in.html";
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
+      });
+    </script>
+  </body>
+</html>
