@@ -1,0 +1,8 @@
+body .page{
+    display: flex;
+    flex-wrap: wrap;
+}
+.page>section{
+    width: 50vw;
+    height: 50vh;
+}

@@ -1,0 +1,23 @@
+#app2{
+    border: 1px solid blue;
+}
+#app2 .tabBar{
+    display: flex;
+}
+#app2 .tabBar>li{
+    width: 50%;
+    border: 3px solid black;
+}
+#app2 .tabBar li.selected{
+    background-color:darkcyan;
+}
+#app2 .tabContent{
+
+}
+#app2 .tabContent li{
+    display: none;
+}
+/* //样式与行为分离 */
+#app2 .tabContent li.active{
+    display: block;
+}
