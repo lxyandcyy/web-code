@@ -8,9 +8,10 @@ module.exports = {
     mode:'development',
     module: {
         rules: [
+            ...base.module.rules,
             {
                 test: /\.css$/i,
-                use: [ 'style-loader', 'css-loader'],
+                use: [ 'style-loader', 'css-loader','sass-loader'],
             },
         ],
     },

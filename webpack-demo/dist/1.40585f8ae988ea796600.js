@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{9:function(e,o,n){"use strict";n.r(o),console.log("The lazy.js module has loaded! See the network tab in dev tools..."),o.default=()=>{alert("我是一个懒加载模块")}}}]);
